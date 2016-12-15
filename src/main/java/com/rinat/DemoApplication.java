@@ -27,16 +27,15 @@ public class DemoApplication {
 		twitterRoute.setDelay(6000);
 		twitterRoute.setPort(9091);
 
-		Main main = new Main();
-		main.addRouteBuilder(twitterRoute);
+//		Main main = new Main();
+//		main.addRouteBuilder(twitterRoute);
 
 //		main.run();
 
-		main.
 
 
-//		SpringApplication.run(DemoApplication.class, args);
-		SpringApplication.run(main, args);
+		SpringApplication.run(DemoApplication.class, args);
+//		SpringApplication.run(main, args);
 	}
 
 }
