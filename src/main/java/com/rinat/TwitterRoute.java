@@ -8,13 +8,21 @@ import org.springframework.stereotype.Component;
 @Component
 public class TwitterRoute extends RouteBuilder {
 
-    private int port = 9091;
-    private String searchTerm;
-    private int delay = 5000;
-    private String consumerKey;
-    private String consumerSecret;
-    private String accessToken;
-    private String accessTokenSecret;
+    private static String host = "localhost";
+    private static int port = 9091;
+    private static String searchTerm = "Путин";
+    private static int delay = 5000;
+
+//    private String consumerKey;
+//    private String consumerSecret;
+//    private String accessToken;
+//    private String accessTokenSecret;
+
+    private static String consumerKey = "NMqaca1bzXsOcZhP2XlwA";
+    private static String consumerSecret = "VxNQiRLwwKVD0K9mmfxlTTbVdgRpriORypnUbHhxeQw";
+    private static String accessToken = "26693234-W0YjxL9cMJrC0VZZ4xdgFMymxIQ10LeL1K8YlbBY";
+    private static String accessTokenSecret = "BZD51BgzbOdFstWZYsqB5p5dbuuDV12vrOdatzhY4E";
+
 
     public int getPort() {
         return port;
@@ -76,7 +84,7 @@ public class TwitterRoute extends RouteBuilder {
     public void configure() throws Exception {
 
         WebsocketComponent wc = getContext().getComponent("websocket", WebsocketComponent.class);
-        wc.setHost("localhost");
+        wc.setHost(host);
         wc.setPort(port);
         wc.setStaticResources("classpath:.");
 
@@ -86,6 +94,8 @@ public class TwitterRoute extends RouteBuilder {
         tc.setAccessTokenSecret(accessTokenSecret);
         tc.setConsumerKey(consumerKey);
         tc.setConsumerSecret(consumerSecret);
+
+
 
         fromF("twitter://search?type=polling&delay=%s&keywords=%s", delay, searchTerm)
 //                .to("log:tweet")
